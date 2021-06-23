@@ -67,6 +67,8 @@
     NSString *fullPosterURLString = [baseURLString stringByAppendingString:posterURLString];
     
     NSURL *posterURL = [NSURL URLWithString:fullPosterURLString];
+    
+    cell.posterView.image = nil;
     [cell.posterView setImageWithURL:posterURL ];
 //    cell.posterView.
 //    cell.textLabel.text = movie[@"title"];
