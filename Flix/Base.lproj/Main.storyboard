@@ -71,10 +71,10 @@
             </objects>
             <point key="canvasLocation" x="938.46153846153845" y="88.151658767772503"/>
         </scene>
-        <!--View Controller-->
+        <!--Details View Controller-->
         <scene sceneID="xlp-BY-Gxi">
             <objects>
-                <viewController id="N2t-w6-qsN" sceneMemberID="viewController">
+                <viewController id="N2t-w6-qsN" customClass="DetailsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JEd-qt-7hF">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -92,7 +92,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lAK-un-kCb">
-                                        <rect key="frame" x="130" y="208" width="75" height="36"/>
+                                        <rect key="frame" x="130" y="208" width="252" height="36"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
                                         <nil key="textColor"/>
@@ -114,6 +114,12 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="7KA-og-YeG"/>
+                    <connections>
+                        <outlet property="backdropView" destination="ih5-7y-D2c" id="MIV-em-Dtq"/>
+                        <outlet property="posterView" destination="exi-Wd-QIi" id="os7-0e-tAK"/>
+                        <outlet property="synopsisLabel" destination="dle-TB-MpU" id="3h6-Cm-Vh4"/>
+                        <outlet property="titleLabel" destination="lAK-un-kCb" id="8K7-tf-hCC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R44-qb-AXh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
