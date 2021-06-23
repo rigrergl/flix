@@ -52,11 +52,12 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [[UITableViewCell alloc] init];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MovieCell"];
+//    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"MovieCell"];
     
     NSDictionary *movie = self.movies[indexPath.row];
     
-    cell.textLabel.text = movie[@"title"];
+//    cell.textLabel.text = movie[@"title"];
     
     return cell;
 }
