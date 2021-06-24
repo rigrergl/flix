@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="tNq-PF-dxd">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aTI-6M-N8h">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
@@ -75,11 +75,63 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="938.46153846153845" y="88.151658767772503"/>
+            <point key="canvasLocation" x="28" y="815"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="jP1-r9-idE">
+            <objects>
+                <tabBarController id="aTI-6M-N8h" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="PRp-Ql-LLe">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="tNq-PF-dxd" kind="relationship" relationship="viewControllers" id="nEO-jd-m2M"/>
+                        <segue destination="w5z-gP-0Ze" kind="relationship" relationship="viewControllers" id="xOR-Om-G8X"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RE0-je-OlI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1203" y="-756"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="4ga-e1-lsn">
+            <objects>
+                <navigationController id="w5z-gP-0Ze" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="epq-Tr-c8d"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Q56-e6-49h">
+                        <rect key="frame" x="0.0" y="44" width="390" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="HUn-oN-Ze1" kind="relationship" relationship="rootViewController" id="2A0-vn-Q0E"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="feH-BN-Sgh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2188" y="88"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="4qG-CN-DZ3">
+            <objects>
+                <viewController id="HUn-oN-Ze1" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="a6l-3P-fR9">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="Vni-hU-BZg"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="ErC-eX-wYh"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="snh-am-yMO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2188" y="849"/>
         </scene>
         <!--Details View Controller-->
         <scene sceneID="xlp-BY-Gxi">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="R44-qb-AXh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController id="N2t-w6-qsN" customClass="DetailsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JEd-qt-7hF">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
@@ -127,14 +179,14 @@
                         <outlet property="titleLabel" destination="lAK-un-kCb" id="8K7-tf-hCC"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="R44-qb-AXh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1670.7692307692307" y="95.97156398104265"/>
+            <point key="canvasLocation" x="28" y="1528"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Now Playing-->
         <scene sceneID="yvk-l6-ktT">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tNq-PF-dxd" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Now Playing" id="gzx-H6-INX"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="B7x-Rr-uff">
                         <rect key="frame" x="0.0" y="44" width="390" height="44"/>
