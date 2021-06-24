@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		03354540D9D5C8F74135F171 /* Pods_Flix.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2BFE80A073AE051AC5F8090 /* Pods_Flix.framework */; };
+		3B17BCE326846B81007D80B7 /* MovieCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B17BCE226846B81007D80B7 /* MovieCollectionCell.m */; };
 		3B5D07B8268393FB00ED4DC7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5D07B7268393FB00ED4DC7 /* AppDelegate.m */; };
 		3B5D07BB268393FB00ED4DC7 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5D07BA268393FB00ED4DC7 /* SceneDelegate.m */; };
 		3B5D07C1268393FB00ED4DC7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B5D07BF268393FB00ED4DC7 /* Main.storyboard */; };
@@ -42,6 +43,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3B17BCE126846B81007D80B7 /* MovieCollectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MovieCollectionCell.h; sourceTree = "<group>"; };
+		3B17BCE226846B81007D80B7 /* MovieCollectionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MovieCollectionCell.m; sourceTree = "<group>"; };
 		3B5D07B3268393FB00ED4DC7 /* Flix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flix.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B5D07B6268393FB00ED4DC7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3B5D07B7268393FB00ED4DC7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -195,6 +198,8 @@
 			children = (
 				3B5D07F12683CB2300ED4DC7 /* MovieCell.h */,
 				3B5D07F22683CB2300ED4DC7 /* MovieCell.m */,
+				3B17BCE126846B81007D80B7 /* MovieCollectionCell.h */,
+				3B17BCE226846B81007D80B7 /* MovieCollectionCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -457,6 +462,7 @@
 				3B5D07F32683CB2300ED4DC7 /* MovieCell.m in Sources */,
 				3B5D07ED26839E0900ED4DC7 /* MoviesViewController.m in Sources */,
 				3B5D07F62683EBC600ED4DC7 /* DetailsViewController.m in Sources */,
+				3B17BCE326846B81007D80B7 /* MovieCollectionCell.m in Sources */,
 				3B5D07C9268393FC00ED4DC7 /* main.m in Sources */,
 				3B5D07BB268393FB00ED4DC7 /* SceneDelegate.m in Sources */,
 				3BD2E445268463DC00543888 /* MoviesGridViewController.m in Sources */,

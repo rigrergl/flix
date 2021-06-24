@@ -132,14 +132,23 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="pwj-5b-RBv">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MovieCollectionCell" id="pwj-5b-RBv" customClass="MovieCollectionCell">
                                         <rect key="frame" x="0.0" y="0.0" width="131" height="197"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="EJ4-mR-JS2">
                                             <rect key="frame" x="0.0" y="0.0" width="131" height="197"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9hY-5F-ADE">
+                                                    <rect key="frame" x="0.0" y="0.0" width="131" height="197"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                            </subviews>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="131" height="197"/>
+                                        <connections>
+                                            <outlet property="posterView" destination="9hY-5F-ADE" id="4Dg-L3-Lc7"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -159,7 +168,6 @@
         <!--Details View Controller-->
         <scene sceneID="xlp-BY-Gxi">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="R44-qb-AXh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController id="N2t-w6-qsN" customClass="DetailsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JEd-qt-7hF">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
@@ -207,6 +215,7 @@
                         <outlet property="titleLabel" destination="lAK-un-kCb" id="8K7-tf-hCC"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="R44-qb-AXh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="28" y="1528"/>
         </scene>
