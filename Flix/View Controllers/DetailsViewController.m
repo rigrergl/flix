@@ -41,6 +41,8 @@
     self.backdropView.image = nil;
     [self.backdropView setImageWithURL:backdropURL ];
     
+    self.titleLabel.text = self.movie[@"title"];
+    self.synopsisLabel.text = self.movie[@"overview"];
 }
 
 /*
