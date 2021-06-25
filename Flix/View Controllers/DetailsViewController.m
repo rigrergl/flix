@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *posterView;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *synopsisLabel;
+@property (weak, nonatomic) IBOutlet UIButton *favoriteButton;
 
 @end
 
@@ -22,6 +23,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+   
     
     //setting up poster
     NSString *baseURLString = @"https://image.tmdb.org/t/p/w500";
@@ -52,6 +55,24 @@
 - (IBAction)onTapPoster:(id)sender {
     NSLog(@"Tap");
     [self performSegueWithIdentifier:@"webSegue" sender:nil];
+}
+
+- (IBAction)favoriteButtonClicked:(UIButton *)sender {
+    
+    
+    NSLog(@" Selected State: %d", sender.isSelected);
+    
+    UIImage * unselectedImage = [UIImage imageNamed:@"heart"];
+    UIImage * selectedImage = [UIImage imageNamed:@"heart.fill"];
+    
+    if ([sender isSelected]) {
+            [sender setImage:unselectedImage forState:UIControlStateNormal];
+            [sender setSelected:NO];
+         } else {
+            [sender setImage:selectedImage forState:UIControlStateSelected];
+            [sender setSelected:YES];
+         }
+    
 }
 
 

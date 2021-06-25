@@ -219,26 +219,12 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lAK-un-kCb">
-                                        <rect key="frame" x="152" y="240" width="230" height="36"/>
+                                        <rect key="frame" x="152" y="240" width="230" height="151"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="50"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dle-TB-MpU">
-                                        <rect key="frame" x="8" y="371" width="374" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YSM-aN-qzC">
-                                        <rect key="frame" x="350" y="208" width="32" height="24"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal">
-                                            <imageReference key="image" image="heart" catalog="system" symbolScale="large"/>
-                                        </state>
-                                    </button>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mPR-Rq-z3M">
                                         <rect key="frame" x="8" y="166" width="130" height="176"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -255,6 +241,23 @@
                                             <outletCollection property="gestureRecognizers" destination="Bjj-sk-vz9" appends="YES" id="REg-Rs-WRl"/>
                                         </connections>
                                     </view>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YSM-aN-qzC">
+                                        <rect key="frame" x="350" y="208" width="32" height="24"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal">
+                                            <imageReference key="image" image="heart." symbolScale="large"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="favoriteButtonClicked:" destination="N2t-w6-qsN" eventType="touchUpInside" id="nZV-Tk-uD8"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dle-TB-MpU">
+                                        <rect key="frame" x="8" y="399" width="374" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <gestureRecognizers/>
                                 <viewLayoutGuide key="contentLayoutGuide" id="J12-FN-AmK"/>
@@ -267,6 +270,7 @@
                     <navigationItem key="navigationItem" id="7KA-og-YeG"/>
                     <connections>
                         <outlet property="backdropView" destination="ih5-7y-D2c" id="MIV-em-Dtq"/>
+                        <outlet property="favoriteButton" destination="YSM-aN-qzC" id="CrQ-EG-VEL"/>
                         <outlet property="posterView" destination="exi-Wd-QIi" id="os7-0e-tAK"/>
                         <outlet property="synopsisLabel" destination="dle-TB-MpU" id="3h6-Cm-Vh4"/>
                         <outlet property="titleLabel" destination="lAK-un-kCb" id="8K7-tf-hCC"/>
@@ -303,7 +307,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="heart" catalog="system" width="128" height="109"/>
+        <image name="heart." width="128" height="128"/>
         <image name="now_playing_tabbar_item" width="21" height="21"/>
         <image name="superhero_tabbar_item" width="21" height="23"/>
         <systemColor name="opaqueSeparatorColor">
