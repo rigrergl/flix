@@ -17,13 +17,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSString *baseYoutubeURL = @"https://www.youtube.com/watch?v=\SUXWAEX2jlg";
+    NSString *baseYoutubeURL = @"https://www.youtube.com/watch?v=";
+    NSString *keyString = @"SUXWAEX2jlg";
     
     // Do any additional setup after loading the view.
     NSLog(@"Movie ID: %d", self.movie_id);
     
     // As a property or local variable
-    NSString *urlString = baseYoutubeURL;
+    NSString *urlString = [NSString stringWithFormat:@"%@%@", baseYoutubeURL, keyString];
+//    NSString *urlString = @"https://www.dropbox.com/terms?mobile=1";
     
     // Convert the url String to a NSURL object.
     NSURL *url = [NSURL URLWithString:urlString];
