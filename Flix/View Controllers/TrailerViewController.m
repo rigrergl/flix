@@ -22,10 +22,8 @@
     
     NSString *beginningString = @"https://api.themoviedb.org/3/movie/";
     NSString *endingString = @"/videos?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&language=en-US";
-    NSString *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%ld%@", beginningString, self.movie_id, endingString]];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%ld%@", beginningString, self.movie_id, endingString]];
     
-    
-//    NSURL *url = [NSURL URLWithString:@"https://api.themoviedb.org/3/movie/{movie_id}/videos?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&language=en-US"];
     NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
@@ -41,15 +39,10 @@
            }
        }];
     [task resume];
-    ////////////////////////////
 }
 
 - (void) loadYoutube {
     NSString *baseYoutubeURL = @"https://www.youtube.com/watch?v=";
-//    NSString *keyString = @"SUXWAEX2jlg";
-    
-    // Do any additional setup after loading the view.
-//    NSLog(@"Movie ID: %d", self.movie_id);
     
     // As a property or local variable
     NSString *urlString = [NSString stringWithFormat:@"%@%@", baseYoutubeURL, self.keyString];
