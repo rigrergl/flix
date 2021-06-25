@@ -9,7 +9,9 @@
 #import "WebKit/Webkit.h"
 
 @interface TrailerViewController ()
+
 @property (weak, nonatomic) IBOutlet WKWebView *webView;
+@property (strong, nonatomic) NSString* keyString;
 
 @end
 
@@ -17,25 +19,51 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    NSString *beginningString = @"https://api.themoviedb.org/3/movie/";
+    NSString *endingString = @"/videos?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&language=en-US";
+    NSString *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%ld%@", beginningString, self.movie_id, endingString]];
+    
+    
+//    NSURL *url = [NSURL URLWithString:@"https://api.themoviedb.org/3/movie/{movie_id}/videos?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&language=en-US"];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
+    NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+           if (error != nil) {
+               NSLog(@"%@", [error localizedDescription]);
+           }
+           else {
+               NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+               NSArray *results = dataDictionary[@"results"];
+               NSDictionary *resultDictionary = results[0];
+               self.keyString = resultDictionary[@"key"];
+               [self loadYoutube];
+           }
+       }];
+    [task resume];
+    ////////////////////////////
+}
+
+- (void) loadYoutube {
     NSString *baseYoutubeURL = @"https://www.youtube.com/watch?v=";
-    NSString *keyString = @"SUXWAEX2jlg";
+//    NSString *keyString = @"SUXWAEX2jlg";
     
     // Do any additional setup after loading the view.
-    NSLog(@"Movie ID: %d", self.movie_id);
+//    NSLog(@"Movie ID: %d", self.movie_id);
     
     // As a property or local variable
-    NSString *urlString = [NSString stringWithFormat:@"%@%@", baseYoutubeURL, keyString];
+    NSString *urlString = [NSString stringWithFormat:@"%@%@", baseYoutubeURL, self.keyString];
 //    NSString *urlString = @"https://www.dropbox.com/terms?mobile=1";
     
     // Convert the url String to a NSURL object.
-    NSURL *url = [NSURL URLWithString:urlString];
+    NSURL *youtubeURL = [NSURL URLWithString:urlString];
 
     // Place the URL in a URL Request.
-    NSURLRequest *request = [NSURLRequest requestWithURL:url
+    NSURLRequest *youtubeRequest = [NSURLRequest requestWithURL:youtubeURL
                                              cachePolicy:NSURLRequestReloadIgnoringLocalCacheData
                                          timeoutInterval:10.0];
     // Load Request into WebView.
-    [self.webView loadRequest:request];
+    [self.webView loadRequest:youtubeRequest];
 }
 
 /*
