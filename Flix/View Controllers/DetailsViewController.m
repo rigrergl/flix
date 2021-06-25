@@ -58,12 +58,14 @@
 }
 
 - (IBAction)favoriteButtonClicked:(UIButton *)sender {
-    
+//    let homeImage = UIImage(systemName: "house", withConfiguration: homeSymbolConfiguration)
+
+//    UIImage * homeImage = [UIImage systemImageNamed:@"house"];
     
     NSLog(@" Selected State: %d", sender.isSelected);
     
-    UIImage * unselectedImage = [UIImage imageNamed:@"heart"];
-    UIImage * selectedImage = [UIImage imageNamed:@"heart.fill"];
+    UIImage * unselectedImage = [UIImage systemImageNamed:@"heart"];
+    UIImage * selectedImage = [UIImage systemImageNamed:@"heart.fill"];
     
     if ([sender isSelected]) {
             [sender setImage:unselectedImage forState:UIControlStateNormal];

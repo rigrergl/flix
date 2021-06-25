@@ -3,7 +3,6 @@
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
-        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -242,11 +241,9 @@
                                         </connections>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YSM-aN-qzC">
-                                        <rect key="frame" x="350" y="208" width="32" height="24"/>
+                                        <rect key="frame" x="356" y="209" width="21" height="22"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal">
-                                            <imageReference key="image" image="heart." symbolScale="large"/>
-                                        </state>
+                                        <state key="normal" image="heart" catalog="system"/>
                                         <connections>
                                             <action selector="favoriteButtonClicked:" destination="N2t-w6-qsN" eventType="touchUpInside" id="nZV-Tk-uD8"/>
                                         </connections>
@@ -307,7 +304,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="heart." width="128" height="128"/>
+        <image name="heart" catalog="system" width="128" height="109"/>
         <image name="now_playing_tabbar_item" width="21" height="21"/>
         <image name="superhero_tabbar_item" width="21" height="23"/>
         <systemColor name="opaqueSeparatorColor">
