@@ -6,6 +6,7 @@
 //
 
 #import "DetailsViewController.h"
+#import "TrailerViewController.h"
 #import "UIImageView+AFNetworking.h"
 
 @interface DetailsViewController ()
@@ -54,14 +55,19 @@
 }
 
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    
+    TrailerViewController *trailerViewController = [segue destinationViewController];
+    
+    NSInteger movie_id = [self.movie[@"id"] integerValue];
+    trailerViewController.movie_id = movie_id;
 }
-*/
+
 
 @end

@@ -55,7 +55,7 @@
 //               NSLog(@"%@", dataDictionary);
                self.movies = dataDictionary[@"results"];
                for (NSDictionary *movie in self.movies){
-                   NSLog(@"%@", movie[@"title"]);
+                   NSLog(@"%@", movie[@"id"]);
                }
                
                [self.tableView reloadData];

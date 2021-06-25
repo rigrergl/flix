@@ -18,6 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    NSLog(@"Movie ID: %d", self.movie_id);
     
     // As a property or local variable
     NSString *urlString = @"https://www.dropbox.com/terms?mobile=1";
