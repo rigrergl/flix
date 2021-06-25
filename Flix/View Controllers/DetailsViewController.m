@@ -46,6 +46,20 @@
     
     [self.titleLabel sizeToFit];
     [self.synopsisLabel sizeToFit];
+    
+    
+    //setting up tap gesture recognizer
+    // Here we use the method didPan(sender:), which we defined in the previous step, as the action.
+    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTap:)];
+
+    
+    // Attach it to a view of your choice. If it's a UIImageView, remember to enable user interaction
+    [self.posterView setUserInteractionEnabled:YES];
+    [self.posterView addGestureRecognizer:tapGestureRecognizer];
+}
+
+- (IBAction)didTap:(UITapGestureRecognizer *)sender {
+    NSLog(@"Tapped");
 }
 
 /*
