@@ -14,7 +14,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *posterView;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *synopsisLabel;
-@property (weak, nonatomic) IBOutlet UIButton *favoriteButton;
 
 @end
 
@@ -66,6 +65,10 @@
     
     UIImage * unselectedImage = [UIImage systemImageNamed:@"heart"];
     UIImage * selectedImage = [UIImage systemImageNamed:@"heart.fill"];
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setDouble:0.2 forKey:@"default_tip_percentage"];
+    [defaults synchronize];
     
     if ([sender isSelected]) {
             [sender setImage:unselectedImage forState:UIControlStateNormal];

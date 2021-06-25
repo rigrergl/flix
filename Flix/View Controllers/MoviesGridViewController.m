@@ -13,6 +13,7 @@
 
 @property (nonatomic, strong) NSArray *movies;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (strong, nonatomic) NSArray* favoriteIDs;
 
 @end
 
@@ -20,6 +21,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    self.favoriteIDs = [NSArray arrayWithObjects:@"508943",@"520763",nil];
+
     
     self.collectionView.dataSource = self;
     self.collectionView.delegate = self;
@@ -51,6 +56,40 @@
                NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
 
                self.movies = dataDictionary[@"results"];
+               
+               NSArray *favoriteMovies = [[NSArray alloc] init];
+               
+               NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(NSDictionary *movie, NSDictionary *bindings) {
+//                   for(id currentTovie in self.movies) {
+//                       NSLog(@"ID: %@", movie[@"id"]);
+//                       NSInteger movieID =(NSInteger)508943;
+//                       NSInteger fetchedMovieID = (NSInteger)[movie[@"id"] integerValue];
+//
+//                       NSLog(@"%ld %ld", fetchedMovieID, movieID);
+//
+//                       if(fetchedMovieID == movieID){
+//                           NSLog(@"Returned true");
+//                           return true;
+//                       }
+//                   }
+//                   return false;
+                   
+                   NSInteger movieID =(NSInteger)423108;
+                   NSInteger fetchedMovieID = (NSInteger)[movie[@"id"] integerValue];
+                   
+                   NSLog(@"%ld %ld", fetchedMovieID, movieID);
+                   
+                   if(fetchedMovieID == movieID){
+                        NSLog(@"Returned true");
+                        return true;
+                   } else {
+                       return false;
+                   }
+               }];
+               
+               self.movies = [self.movies filteredArrayUsingPredicate:predicate];
+//               NSLog(@"%@", self.movies);
+            
                
                [self.collectionView reloadData];
            }

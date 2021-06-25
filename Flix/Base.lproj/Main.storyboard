@@ -267,7 +267,6 @@
                     <navigationItem key="navigationItem" id="7KA-og-YeG"/>
                     <connections>
                         <outlet property="backdropView" destination="ih5-7y-D2c" id="MIV-em-Dtq"/>
-                        <outlet property="favoriteButton" destination="YSM-aN-qzC" id="CrQ-EG-VEL"/>
                         <outlet property="posterView" destination="exi-Wd-QIi" id="os7-0e-tAK"/>
                         <outlet property="synopsisLabel" destination="dle-TB-MpU" id="3h6-Cm-Vh4"/>
                         <outlet property="titleLabel" destination="lAK-un-kCb" id="8K7-tf-hCC"/>
