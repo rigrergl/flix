@@ -90,6 +90,8 @@
             NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
             NSLog(@"New Favorite IDs: %@", mutableArray);
             [defaults setObject:mutableArray forKey:@"favoriteIDs"];
+            [defaults synchronize];
+
          }
     
 }

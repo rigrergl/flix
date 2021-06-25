@@ -14,6 +14,7 @@
 @property (nonatomic, strong) NSArray *movies;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (strong, nonatomic) NSArray* favoriteIDs;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
 
 @end
 
@@ -21,7 +22,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSLog(@"Grid view loaded");
     
+    self.refreshControl = [[UIRefreshControl alloc ] init];
+    [self.collectionView insertSubview:self.refreshControl atIndex:0];
+    [self.refreshControl addTarget:self action:@selector(fetchMovies) forControlEvents:UIControlEventValueChanged];
 //    NSArray* test = @[@520763, @337404, @508943];
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -106,11 +111,10 @@
                
                self.movies = [self.movies filteredArrayUsingPredicate:predicate];
 //               NSLog(@"%@", self.movies);
-            
-               
                [self.collectionView reloadData];
            }
-//        [self.refreshControl endRefreshing];
+        [self.refreshControl endRefreshing];
+        [self.collectionView reloadData];
 //        [self.activityIndicator stopAnimating];
        }];
     [task resume];
