@@ -35,14 +35,13 @@ The following **additional** features are implemented:
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
-1. Implementing Search Bar
-2. How to automatically position the move banner so that it's not hidden by the navigation bar (details page)
+1. I'd like to discuss the styling ideas that others came up with
 
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
 
-<img src='ezgif.com-video-to-gif.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='ezgif.com-video-to-gif.gif' title='Video Walkthrough' width='300' alt='Video Walkthrough' />
 
 GIF created with [Kap](https://getkap.co/).
 
