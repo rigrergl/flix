@@ -29,12 +29,6 @@
     [self.refreshControl addTarget:self action:@selector(fetchMovies) forControlEvents:UIControlEventValueChanged];
 //    NSArray* test = @[@520763, @337404, @508943];
     
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-//    [defaults setObject:test forKey:@"favoriteIDs"];
-
-    
-    NSArray* favoriteIDs = [defaults arrayForKey:@"favoriteIDs"];
-    self.favoriteIDs = favoriteIDs;
 
     
     self.collectionView.dataSource = self;
@@ -54,7 +48,12 @@
     layout.itemSize = CGSizeMake(itemWidth, itemHeight);
 }
 
+
 - (void) fetchMovies {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSArray* favoriteIDs = [defaults arrayForKey:@"favoriteIDs"];
+    self.favoriteIDs = favoriteIDs;
+    
     NSURL *url = [NSURL URLWithString:@"https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed"];
     NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
