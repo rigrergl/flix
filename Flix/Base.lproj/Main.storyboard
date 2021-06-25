@@ -171,7 +171,7 @@
             <objects>
                 <viewController id="kcN-9r-h8R" customClass="TrailerViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZM4-Ya-Jmd">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <wkWebView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XLN-mj-npT">
@@ -256,6 +256,7 @@
                         <outlet property="posterView" destination="exi-Wd-QIi" id="os7-0e-tAK"/>
                         <outlet property="synopsisLabel" destination="dle-TB-MpU" id="3h6-Cm-Vh4"/>
                         <outlet property="titleLabel" destination="lAK-un-kCb" id="8K7-tf-hCC"/>
+                        <segue destination="kcN-9r-h8R" kind="presentation" identifier="webSegue" id="dDH-A3-urI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R44-qb-AXh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

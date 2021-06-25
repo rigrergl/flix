@@ -50,6 +50,7 @@
 
 - (IBAction)onTapPoster:(id)sender {
     NSLog(@"Tap");
+    [self performSegueWithIdentifier:@"webSegue" sender:nil];
 }
 
 
