@@ -22,9 +22,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSArray* test = @[@520763, @337404, @508943];
     
-    self.favoriteIDs = @[@520763, @337404, @508943];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:test forKey:@"favoriteIDs"];
+
+    
+    NSArray* favoriteIDs = [defaults arrayForKey:@"favoriteIDs"];
+    self.favoriteIDs = favoriteIDs;
 
     
     self.collectionView.dataSource = self;
