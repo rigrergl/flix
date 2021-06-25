@@ -23,7 +23,8 @@
     [super viewDidLoad];
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    self.favoriteIDs = [NSArray arrayWithObjects:@"508943",@"520763",nil];
+    
+    self.favoriteIDs = @[@520763, @337404, @508943];
 
     
     self.collectionView.dataSource = self;
@@ -74,17 +75,33 @@
 //                   }
 //                   return false;
                    
-                   NSInteger movieID =(NSInteger)423108;
-                   NSInteger fetchedMovieID = (NSInteger)[movie[@"id"] integerValue];
-                   
-                   NSLog(@"%ld %ld", fetchedMovieID, movieID);
-                   
-                   if(fetchedMovieID == movieID){
-                        NSLog(@"Returned true");
-                        return true;
-                   } else {
-                       return false;
+                   for (NSNumber* favID in self.favoriteIDs) {
+//                       NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+                       
+                       NSNumber* fetchedMovieID = movie[@"id"];
+                       NSLog(@"%@ %@", favID, fetchedMovieID);
+//                       if([favID isEqualToString:currentMovieID]){
+                       if([favID integerValue] == [fetchedMovieID integerValue]){
+                           NSLog(@"equal");
+                           return true;
+                       }
+                       else {
+                           NSLog(@"Not equal");
+                       }
                    }
+                   return false;
+                   
+//                   NSInteger movieID =(NSInteger)423108;
+//                   NSInteger fetchedMovieID = (NSInteger)[movie[@"id"] integerValue];
+//
+//                   NSLog(@"%ld %ld", fetchedMovieID, movieID);
+//
+//                   if(fetchedMovieID == movieID){
+//                        NSLog(@"Returned true");
+//                        return true;
+//                   } else {
+//                       return false;
+//                   }
                }];
                
                self.movies = [self.movies filteredArrayUsingPredicate:predicate];
