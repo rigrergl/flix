@@ -166,6 +166,21 @@
             </objects>
             <point key="canvasLocation" x="2187.6923076923076" y="848.8151658767772"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="6I5-dO-EDZ">
+            <objects>
+                <viewController id="kcN-9r-h8R" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ZM4-Ya-Jmd">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="qf1-jv-lpU"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fam-cw-5rI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-853" y="2158"/>
+        </scene>
         <!--Details View Controller-->
         <scene sceneID="xlp-BY-Gxi">
             <objects>
@@ -196,6 +211,9 @@
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="exi-Wd-QIi">
                                                 <rect key="frame" x="8" y="8" width="114" height="160"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <connections>
+                                                    <outletCollection property="gestureRecognizers" destination="v0f-hY-ViB" appends="YES" id="q2e-TC-tbR"/>
+                                                </connections>
                                             </imageView>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -208,8 +226,12 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
+                                <gestureRecognizers/>
                                 <viewLayoutGuide key="contentLayoutGuide" id="J12-FN-AmK"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="qQ2-Ko-xUF"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="v0f-hY-ViB" appends="YES" id="17u-64-vqE"/>
+                                </connections>
                             </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="q7n-qw-FQ3"/>
@@ -224,6 +246,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R44-qb-AXh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="v0f-hY-ViB">
+                    <connections>
+                        <segue destination="kcN-9r-h8R" kind="presentation" id="i3M-m8-GtN"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="27.69230769230769" y="1527.7251184834122"/>
         </scene>
