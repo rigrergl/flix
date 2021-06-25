@@ -48,6 +48,11 @@
     [self.synopsisLabel sizeToFit];
 }
 
+- (IBAction)onTapPoster:(id)sender {
+    NSLog(@"Tap");
+}
+
+
 /*
 #pragma mark - Navigation
 
