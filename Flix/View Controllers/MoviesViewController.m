@@ -122,7 +122,7 @@
         
         NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(NSDictionary *movie, NSDictionary *bindings) {
     
-            return [movie[@"title"] containsString:searchText];
+            return [movie[@"title"] localizedCaseInsensitiveContainsString:searchText];
             
         }];
         self.filteredMovies = [self.movies filteredArrayUsingPredicate:predicate];
