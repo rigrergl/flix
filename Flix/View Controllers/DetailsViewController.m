@@ -73,9 +73,23 @@
     if ([sender isSelected]) {
             [sender setImage:unselectedImage forState:UIControlStateNormal];
             [sender setSelected:NO];
+            
+            NSArray* favoriteIDs = [defaults arrayForKey:@"favoriteIDs"];
+            
+
+//            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//            [defaults setObject:test forKey:@"favoriteIDs"];
          } else {
             [sender setImage:selectedImage forState:UIControlStateSelected];
             [sender setSelected:YES];
+             
+            NSArray* favoriteIDs = [defaults arrayForKey:@"favoriteIDs"];
+            NSMutableArray* mutableArray = [favoriteIDs mutableCopy];
+            [mutableArray addObject:self.movie[@"id"]];
+             
+            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            NSLog(@"New Favorite IDs: %@", mutableArray);
+            [defaults setObject:mutableArray forKey:@"favoriteIDs"];
          }
     
 }

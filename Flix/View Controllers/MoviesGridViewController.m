@@ -22,10 +22,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    NSArray* test = @[@520763, @337404, @508943];
+//    NSArray* test = @[@520763, @337404, @508943];
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:test forKey:@"favoriteIDs"];
+//    [defaults setObject:test forKey:@"favoriteIDs"];
 
     
     NSArray* favoriteIDs = [defaults arrayForKey:@"favoriteIDs"];
@@ -84,14 +84,9 @@
 //                       NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
                        
                        NSNumber* fetchedMovieID = movie[@"id"];
-                       NSLog(@"%@ %@", favID, fetchedMovieID);
 //                       if([favID isEqualToString:currentMovieID]){
                        if([favID integerValue] == [fetchedMovieID integerValue]){
-                           NSLog(@"equal");
                            return true;
-                       }
-                       else {
-                           NSLog(@"Not equal");
                        }
                    }
                    return false;
