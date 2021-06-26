@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *synopsisLabel;
 @property (nonatomic)BOOL isFavorite;
 @property (weak, nonatomic) IBOutlet UIButton *favoriteButton;
+@property (weak, nonatomic) IBOutlet UIView *youtubeView;
 
 @end
 
@@ -26,6 +27,20 @@
     // Do any additional setup after loading the view.
     NSLog(@"Detail View Loaded");
     
+//    yourView.layer.shadowColor = UIColor.black.cgColor
+//    yourView.layer.shadowOpacity = 1
+//    yourView.layer.shadowOffset = .zero
+//    yourView.layer.shadowRadius = 10
+    
+    self.youtubeView.layer.shadowRadius  = 1.5f;
+    self.youtubeView.layer.shadowColor   = [UIColor colorWithRed:176.f/255.f green:199.f/255.f blue:226.f/255.f alpha:1.f].CGColor;
+    self.youtubeView.layer.shadowOffset  = CGSizeMake(0.0f, 0.0f);
+    self.youtubeView.layer.shadowOpacity = 0.9f;
+    self.youtubeView.layer.masksToBounds = NO;
+
+    UIEdgeInsets shadowInsets     = UIEdgeInsetsMake(-4.0f, -4.0f, -4.0f, -4.0f);
+    UIBezierPath *shadowPath      = [UIBezierPath bezierPathWithRect:UIEdgeInsetsInsetRect(self.youtubeView.bounds, shadowInsets)];
+    self.youtubeView.layer.shadowPath    = shadowPath.CGPath;
     
     //setting up poster
     NSString *baseURLString = @"https://image.tmdb.org/t/p/w500";

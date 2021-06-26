@@ -286,6 +286,7 @@
                         <outlet property="posterView" destination="exi-Wd-QIi" id="os7-0e-tAK"/>
                         <outlet property="synopsisLabel" destination="dle-TB-MpU" id="3h6-Cm-Vh4"/>
                         <outlet property="titleLabel" destination="lAK-un-kCb" id="8K7-tf-hCC"/>
+                        <outlet property="youtubeView" destination="mPR-Rq-z3M" id="qEo-LM-31i"/>
                         <segue destination="kcN-9r-h8R" kind="presentation" identifier="webSegue" id="dDH-A3-urI"/>
                     </connections>
                 </viewController>
