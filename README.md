@@ -44,7 +44,7 @@ Here's a walkthrough of implemented user stories:
 
 <img src='ezgif.com-video-to-gif.gif' title='Video Walkthrough' width='300' alt='Video Walkthrough' />
 
-GIF created with [Kap](https://getkap.co/).
+GIF created with [ezgif](https://ezgif.com).
 
 ## Notes
 
