@@ -72,11 +72,11 @@
     UIImage * unselectedImage = [UIImage systemImageNamed:@"heart"];
     UIImage * selectedImage = [UIImage systemImageNamed:@"heart.fill"];
     if (!self.isFavorite) {
-        [self.favoriteButton setImage:unselectedImage forState:UIControlStateNormal];
+        [self.favoriteButton setBackgroundImage:unselectedImage forState:UIControlStateNormal];
         [self.favoriteButton setSelected:NO];
         
     } else {
-        [self.favoriteButton setImage:selectedImage forState:UIControlStateSelected];
+        [self.favoriteButton setBackgroundImage:selectedImage forState:UIControlStateSelected];
         [self.favoriteButton setSelected:YES];
     }
     
@@ -117,7 +117,7 @@
     
     
     if ([sender isSelected]) {
-        [sender setImage:unselectedImage forState:UIControlStateNormal];
+        [sender setBackgroundImage:unselectedImage forState:UIControlStateNormal];
         [sender setSelected:NO];
         
         NSArray* favoriteIDs = [defaults arrayForKey:@"favoriteIDs"];
@@ -134,7 +134,7 @@
         //            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         //            [defaults setObject:test forKey:@"favoriteIDs"];
     } else {
-        [sender setImage:selectedImage forState:UIControlStateSelected];
+        [sender setBackgroundImage:selectedImage forState:UIControlStateSelected];
         [sender setSelected:YES];
         
         NSArray* favoriteIDs = [defaults arrayForKey:@"favoriteIDs"];
