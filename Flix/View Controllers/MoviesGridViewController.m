@@ -11,6 +11,7 @@
 
 @interface MoviesGridViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
 
+@property (nonatomic, strong) NSArray *allMovies;
 @property (nonatomic, strong) NSArray *movies;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (strong, nonatomic) NSArray* favoriteIDs;
@@ -24,7 +25,37 @@
 
 - (void) viewDidAppear:(BOOL)animated {
     NSLog(@"View appeared");
-    [self fetchMovies];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSArray* favoriteIDs = [defaults arrayForKey:@"favoriteIDs"];
+    self.favoriteIDs = favoriteIDs;
+    
+    NSArray *favoriteMovies = [[NSArray alloc] init];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(NSDictionary *movie, NSDictionary *bindings) {
+        
+        for (NSNumber* favID in self.favoriteIDs) {
+            
+            
+            NSNumber* fetchedMovieID = movie[@"id"];
+            
+            if([favID integerValue] == [fetchedMovieID integerValue]){
+                return true;
+            }
+        }
+        return false;
+        
+    }];
+    
+    self.movies = [self.allMovies filteredArrayUsingPredicate:predicate];
+    
+    [self.collectionView reloadData];
+    
+    if(self.movies.count == 0){
+        NSLog(@"No Selection");
+        self.noFavoritesView.hidden = false;
+    } else {
+        self.noFavoritesView.hidden = true;
+    }
 }
 
 - (void)viewDidLoad {
@@ -73,7 +104,7 @@
         else {
             NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
             
-            self.movies = dataDictionary[@"results"];
+            self.movies = self.allMovies = dataDictionary[@"results"];
             
             NSArray *favoriteMovies = [[NSArray alloc] init];
             
@@ -93,7 +124,6 @@
             }];
             
             self.movies = [self.movies filteredArrayUsingPredicate:predicate];
-            [self.collectionView reloadData];
         }
         [self.refreshControl endRefreshing];
         [self.collectionView reloadData];
