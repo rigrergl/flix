@@ -20,6 +20,11 @@
 
 @implementation MoviesGridViewController
 
+- (void) viewDidAppear:(BOOL)animated {
+    NSLog(@"View appeared");
+    [self fetchMovies];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     NSLog(@"Grid view loaded");
