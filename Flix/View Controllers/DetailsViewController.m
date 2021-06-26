@@ -32,15 +32,15 @@
 //    yourView.layer.shadowOffset = .zero
 //    yourView.layer.shadowRadius = 10
     
-    self.youtubeView.layer.shadowRadius  = 1.5f;
-    self.youtubeView.layer.shadowColor   = [UIColor colorWithRed:176.f/255.f green:199.f/255.f blue:226.f/255.f alpha:1.f].CGColor;
-    self.youtubeView.layer.shadowOffset  = CGSizeMake(0.0f, 0.0f);
-    self.youtubeView.layer.shadowOpacity = 0.9f;
-    self.youtubeView.layer.masksToBounds = NO;
+    self.posterView.layer.shadowRadius  = 1.5f;
+    self.posterView.layer.shadowColor   = [UIColor colorWithRed:176.f/255.f green:199.f/255.f blue:226.f/255.f alpha:1.f].CGColor;
+    self.posterView.layer.shadowOffset  = CGSizeMake(0.0f, 0.0f);
+    self.posterView.layer.shadowOpacity = 0.9f;
+    self.posterView.layer.masksToBounds = NO;
 
-    UIEdgeInsets shadowInsets     = UIEdgeInsetsMake(-4.0f, -4.0f, -4.0f, -4.0f);
-    UIBezierPath *shadowPath      = [UIBezierPath bezierPathWithRect:UIEdgeInsetsInsetRect(self.youtubeView.bounds, shadowInsets)];
-    self.youtubeView.layer.shadowPath    = shadowPath.CGPath;
+    UIEdgeInsets shadowInsets     = UIEdgeInsetsMake(-12.0f, -3.0f, -12.0f, -3.0f);
+    UIBezierPath *shadowPath      = [UIBezierPath bezierPathWithRect:UIEdgeInsetsInsetRect(self.posterView.bounds, shadowInsets)];
+    self.posterView.layer.shadowPath    = shadowPath.CGPath;
     
     //setting up poster
     NSString *baseURLString = @"https://image.tmdb.org/t/p/w500";
