@@ -76,46 +76,21 @@
                NSArray *favoriteMovies = [[NSArray alloc] init];
                
                NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(NSDictionary *movie, NSDictionary *bindings) {
-//                   for(id currentTovie in self.movies) {
-//                       NSLog(@"ID: %@", movie[@"id"]);
-//                       NSInteger movieID =(NSInteger)508943;
-//                       NSInteger fetchedMovieID = (NSInteger)[movie[@"id"] integerValue];
-//
-//                       NSLog(@"%ld %ld", fetchedMovieID, movieID);
-//
-//                       if(fetchedMovieID == movieID){
-//                           NSLog(@"Returned true");
-//                           return true;
-//                       }
-//                   }
-//                   return false;
                    
                    for (NSNumber* favID in self.favoriteIDs) {
-//                       NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+
                        
                        NSNumber* fetchedMovieID = movie[@"id"];
-//                       if([favID isEqualToString:currentMovieID]){
+
                        if([favID integerValue] == [fetchedMovieID integerValue]){
                            return true;
                        }
                    }
                    return false;
                    
-//                   NSInteger movieID =(NSInteger)423108;
-//                   NSInteger fetchedMovieID = (NSInteger)[movie[@"id"] integerValue];
-//
-//                   NSLog(@"%ld %ld", fetchedMovieID, movieID);
-//
-//                   if(fetchedMovieID == movieID){
-//                        NSLog(@"Returned true");
-//                        return true;
-//                   } else {
-//                       return false;
-//                   }
                }];
                
                self.movies = [self.movies filteredArrayUsingPredicate:predicate];
-//               NSLog(@"%@", self.movies);
                [self.collectionView reloadData];
            }
         [self.refreshControl endRefreshing];

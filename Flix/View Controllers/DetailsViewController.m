@@ -25,7 +25,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     NSLog(@"Detail View Loaded");
-   
+    
     
     //setting up poster
     NSString *baseURLString = @"https://image.tmdb.org/t/p/w500";
@@ -57,14 +57,14 @@
     UIImage * unselectedImage = [UIImage systemImageNamed:@"heart"];
     UIImage * selectedImage = [UIImage systemImageNamed:@"heart.fill"];
     if (!self.isFavorite) {
-            [self.favoriteButton setImage:unselectedImage forState:UIControlStateNormal];
-            [self.favoriteButton setSelected:NO];
-
-         } else {
-            [self.favoriteButton setImage:selectedImage forState:UIControlStateSelected];
-            [self.favoriteButton setSelected:YES];
-         }
-
+        [self.favoriteButton setImage:unselectedImage forState:UIControlStateNormal];
+        [self.favoriteButton setSelected:NO];
+        
+    } else {
+        [self.favoriteButton setImage:selectedImage forState:UIControlStateSelected];
+        [self.favoriteButton setSelected:YES];
+    }
+    
     
 }
 
@@ -89,9 +89,9 @@
 }
 
 - (IBAction)favoriteButtonClicked:(UIButton *)sender {
-//    let homeImage = UIImage(systemName: "house", withConfiguration: homeSymbolConfiguration)
-
-//    UIImage * homeImage = [UIImage systemImageNamed:@"house"];
+    //    let homeImage = UIImage(systemName: "house", withConfiguration: homeSymbolConfiguration)
+    
+    //    UIImage * homeImage = [UIImage systemImageNamed:@"house"];
     
     NSLog(@" Selected State: %d", sender.isSelected);
     
@@ -99,38 +99,44 @@
     UIImage * selectedImage = [UIImage systemImageNamed:@"heart.fill"];
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-
+    
     
     if ([sender isSelected]) {
-            [sender setImage:unselectedImage forState:UIControlStateNormal];
-            [sender setSelected:NO];
-            
-            NSArray* favoriteIDs = [defaults arrayForKey:@"favoriteIDs"];
-            
-
-//            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-//            [defaults setObject:test forKey:@"favoriteIDs"];
-         } else {
-             [sender setImage:selectedImage forState:UIControlStateSelected];
-             [sender setSelected:YES];
-              
-             NSArray* favoriteIDs = [defaults arrayForKey:@"favoriteIDs"];
-             NSMutableArray* mutableArray = [favoriteIDs mutableCopy];
-             if(mutableArray == nil)
-                 mutableArray = [[NSMutableArray alloc] init];
-              
-             [mutableArray addObject:self.movie[@"id"]];
-              
-              NSLog(@"%@", self.movie[@"id"]);
-             NSLog(@"New Favorite IDs: %@", mutableArray);
-              
-              
-             [defaults setObject:mutableArray forKey:@"favoriteIDs"];
-             [defaults synchronize];
-
-         }
-    
-    [defaults synchronize];
+        [sender setImage:unselectedImage forState:UIControlStateNormal];
+        [sender setSelected:NO];
+        
+        NSArray* favoriteIDs = [defaults arrayForKey:@"favoriteIDs"];
+        
+        NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(NSNumber* currentID, NSDictionary *bindings) {
+            return currentID != self.movie[@"id"];
+        }];
+        
+        favoriteIDs = [favoriteIDs filteredArrayUsingPredicate:predicate];
+        NSLog(@"New Favorite IDs: %@", favoriteIDs);
+        [defaults setObject:favoriteIDs forKey:@"favoriteIDs"];
+        [defaults synchronize];
+        
+        //            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        //            [defaults setObject:test forKey:@"favoriteIDs"];
+    } else {
+        [sender setImage:selectedImage forState:UIControlStateSelected];
+        [sender setSelected:YES];
+        
+        NSArray* favoriteIDs = [defaults arrayForKey:@"favoriteIDs"];
+        NSMutableArray* mutableArray = [favoriteIDs mutableCopy];
+        if(mutableArray == nil)
+            mutableArray = [[NSMutableArray alloc] init];
+        
+        [mutableArray addObject:self.movie[@"id"]];
+        
+        NSLog(@"%@", self.movie[@"id"]);
+        NSLog(@"New Favorite IDs: %@", mutableArray);
+        
+        
+        [defaults setObject:mutableArray forKey:@"favoriteIDs"];
+        [defaults synchronize];
+        
+    }
 }
 
 
