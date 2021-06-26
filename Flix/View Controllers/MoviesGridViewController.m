@@ -15,6 +15,8 @@
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (strong, nonatomic) NSArray* favoriteIDs;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
+@property (weak, nonatomic) IBOutlet UIView *noFavoritesView;
+
 
 @end
 
@@ -33,7 +35,7 @@
     [self.collectionView insertSubview:self.refreshControl atIndex:0];
     [self.refreshControl addTarget:self action:@selector(fetchMovies) forControlEvents:UIControlEventValueChanged];
     
-
+    
     
     self.collectionView.dataSource = self;
     self.collectionView.delegate = self;
@@ -64,51 +66,58 @@
     NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-           if (error != nil) {
-               NSLog(@"%@", [error localizedDescription]);
-//               [self addNetworkErrorAlert];
-           }
-           else {
-               NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-
-               self.movies = dataDictionary[@"results"];
-               
-               NSArray *favoriteMovies = [[NSArray alloc] init];
-               
-               NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(NSDictionary *movie, NSDictionary *bindings) {
-                   
-                   for (NSNumber* favID in self.favoriteIDs) {
-
-                       
-                       NSNumber* fetchedMovieID = movie[@"id"];
-
-                       if([favID integerValue] == [fetchedMovieID integerValue]){
-                           return true;
-                       }
-                   }
-                   return false;
-                   
-               }];
-               
-               self.movies = [self.movies filteredArrayUsingPredicate:predicate];
-               [self.collectionView reloadData];
-           }
+        if (error != nil) {
+            NSLog(@"%@", [error localizedDescription]);
+            //               [self addNetworkErrorAlert];
+        }
+        else {
+            NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+            
+            self.movies = dataDictionary[@"results"];
+            
+            NSArray *favoriteMovies = [[NSArray alloc] init];
+            
+            NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(NSDictionary *movie, NSDictionary *bindings) {
+                
+                for (NSNumber* favID in self.favoriteIDs) {
+                    
+                    
+                    NSNumber* fetchedMovieID = movie[@"id"];
+                    
+                    if([favID integerValue] == [fetchedMovieID integerValue]){
+                        return true;
+                    }
+                }
+                return false;
+                
+            }];
+            
+            self.movies = [self.movies filteredArrayUsingPredicate:predicate];
+            [self.collectionView reloadData];
+        }
         [self.refreshControl endRefreshing];
         [self.collectionView reloadData];
-//        [self.activityIndicator stopAnimating];
-       }];
+        
+        if(self.movies.count == 0){
+            NSLog(@"No Selection");
+            self.noFavoritesView.hidden = false;
+        } else {
+            self.noFavoritesView.hidden = true;
+        }
+        //        [self.activityIndicator stopAnimating];
+    }];
     [task resume];
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 - (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
     MovieCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"MovieCollectionCell" forIndexPath:indexPath];

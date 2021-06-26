@@ -137,6 +137,20 @@
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
+                                <view key="backgroundView" contentMode="scaleToFill" id="yhz-g4-R2V">
+                                    <rect key="frame" x="0.0" y="-88" width="390" height="844"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="No Favorites..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jQh-qx-pEu">
+                                            <rect key="frame" x="84" y="398" width="222" height="48"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="40"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                </view>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MovieCollectionCell" id="pwj-5b-RBv" customClass="MovieCollectionCell">
                                         <rect key="frame" x="0.0" y="0.0" width="131" height="197"/>
@@ -166,6 +180,7 @@
                     <navigationItem key="navigationItem" id="ErC-eX-wYh"/>
                     <connections>
                         <outlet property="collectionView" destination="hib-PR-byf" id="vOD-gU-yvZ"/>
+                        <outlet property="noFavoritesView" destination="yhz-g4-R2V" id="A1o-6c-XwM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="snh-am-yMO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
