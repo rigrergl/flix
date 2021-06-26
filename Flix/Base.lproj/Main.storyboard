@@ -3,6 +3,7 @@
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -261,9 +262,11 @@
                                         </connections>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YSM-aN-qzC">
-                                        <rect key="frame" x="356" y="209" width="21" height="22"/>
+                                        <rect key="frame" x="354" y="209" width="26" height="22"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" image="heart" catalog="system"/>
+                                        <state key="normal">
+                                            <imageReference key="image" image="heart" catalog="system" symbolScale="large"/>
+                                        </state>
                                         <connections>
                                             <action selector="favoriteButtonClicked:" destination="N2t-w6-qsN" eventType="touchUpInside" id="nZV-Tk-uD8"/>
                                         </connections>
