@@ -27,7 +27,6 @@
     self.refreshControl = [[UIRefreshControl alloc ] init];
     [self.collectionView insertSubview:self.refreshControl atIndex:0];
     [self.refreshControl addTarget:self action:@selector(fetchMovies) forControlEvents:UIControlEventValueChanged];
-//    NSArray* test = @[@520763, @337404, @508943];
     
 
     
@@ -53,6 +52,8 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSArray* favoriteIDs = [defaults arrayForKey:@"favoriteIDs"];
     self.favoriteIDs = favoriteIDs;
+    
+    NSLog(@"%@", self.favoriteIDs);
     
     NSURL *url = [NSURL URLWithString:@"https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed"];
     NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];

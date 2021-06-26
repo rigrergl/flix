@@ -14,6 +14,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *posterView;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *synopsisLabel;
+@property (nonatomic)BOOL isFavorite;
+@property (weak, nonatomic) IBOutlet UIButton *favoriteButton;
 
 @end
 
@@ -22,7 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+    NSLog(@"Detail View Loaded");
    
     
     //setting up poster
@@ -49,6 +51,36 @@
     
     [self.titleLabel sizeToFit];
     [self.synopsisLabel sizeToFit];
+    
+    //setting heart button
+    [self updateFavorite];
+    UIImage * unselectedImage = [UIImage systemImageNamed:@"heart"];
+    UIImage * selectedImage = [UIImage systemImageNamed:@"heart.fill"];
+    if (!self.isFavorite) {
+            [self.favoriteButton setImage:unselectedImage forState:UIControlStateNormal];
+            [self.favoriteButton setSelected:NO];
+
+         } else {
+            [self.favoriteButton setImage:selectedImage forState:UIControlStateSelected];
+            [self.favoriteButton setSelected:YES];
+         }
+
+    
+}
+
+- (void) updateFavorite {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSArray* favoriteIDs = [defaults arrayForKey:@"favoriteIDs"];
+    
+    NSNumber* movieID = self.movie[@"id"];
+    for (NSNumber * favID in favoriteIDs) {
+        if([movieID integerValue] == [favID integerValue]) {
+            self.isFavorite = true;
+            return;
+        }
+    }
+    self.isFavorite = false;
+    return;
 }
 
 - (IBAction)onTapPoster:(id)sender {
@@ -67,8 +99,7 @@
     UIImage * selectedImage = [UIImage systemImageNamed:@"heart.fill"];
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setDouble:0.2 forKey:@"default_tip_percentage"];
-    [defaults synchronize];
+
     
     if ([sender isSelected]) {
             [sender setImage:unselectedImage forState:UIControlStateNormal];
@@ -80,20 +111,26 @@
 //            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 //            [defaults setObject:test forKey:@"favoriteIDs"];
          } else {
-            [sender setImage:selectedImage forState:UIControlStateSelected];
-            [sender setSelected:YES];
-             
-            NSArray* favoriteIDs = [defaults arrayForKey:@"favoriteIDs"];
-            NSMutableArray* mutableArray = [favoriteIDs mutableCopy];
-            [mutableArray addObject:self.movie[@"id"]];
-             
-            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-            NSLog(@"New Favorite IDs: %@", mutableArray);
-            [defaults setObject:mutableArray forKey:@"favoriteIDs"];
-            [defaults synchronize];
+             [sender setImage:selectedImage forState:UIControlStateSelected];
+             [sender setSelected:YES];
+              
+             NSArray* favoriteIDs = [defaults arrayForKey:@"favoriteIDs"];
+             NSMutableArray* mutableArray = [favoriteIDs mutableCopy];
+             if(mutableArray == nil)
+                 mutableArray = [[NSMutableArray alloc] init];
+              
+             [mutableArray addObject:self.movie[@"id"]];
+              
+              NSLog(@"%@", self.movie[@"id"]);
+             NSLog(@"New Favorite IDs: %@", mutableArray);
+              
+              
+             [defaults setObject:mutableArray forKey:@"favoriteIDs"];
+             [defaults synchronize];
 
          }
     
+    [defaults synchronize];
 }
 
 
