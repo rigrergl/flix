@@ -17,6 +17,7 @@
 @property (strong, nonatomic) NSArray* favoriteIDs;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (weak, nonatomic) IBOutlet UIView *noFavoritesView;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
 
 @end
@@ -61,6 +62,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     NSLog(@"Grid view loaded");
+    
+    [self.activityIndicator startAnimating];
+    self.activityIndicator.layer.zPosition = 1;
     
     self.refreshControl = [[UIRefreshControl alloc ] init];
     [self.collectionView insertSubview:self.refreshControl atIndex:0];
@@ -125,6 +129,8 @@
             
             self.movies = [self.movies filteredArrayUsingPredicate:predicate];
         }
+        [self.activityIndicator stopAnimating];
+        self.activityIndicator.hidden = true;
         [self.refreshControl endRefreshing];
         [self.collectionView reloadData];
         
@@ -134,7 +140,6 @@
         } else {
             self.noFavoritesView.hidden = true;
         }
-        //        [self.activityIndicator stopAnimating];
     }];
     [task resume];
 }

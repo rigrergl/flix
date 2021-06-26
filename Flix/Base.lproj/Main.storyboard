@@ -127,6 +127,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="Ki2-IM-6Ea">
+                                <rect key="frame" x="185" y="412" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="hib-PR-byf">
                                 <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -179,6 +183,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="ErC-eX-wYh"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="Ki2-IM-6Ea" id="NR1-t0-qHF"/>
                         <outlet property="collectionView" destination="hib-PR-byf" id="vOD-gU-yvZ"/>
                         <outlet property="noFavoritesView" destination="yhz-g4-R2V" id="A1o-6c-XwM"/>
                     </connections>
