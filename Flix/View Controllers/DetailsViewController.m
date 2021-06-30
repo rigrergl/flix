@@ -43,26 +43,19 @@
     self.posterView.layer.shadowPath    = shadowPath.CGPath;
     
     //setting up poster
-    NSString *baseURLString = @"https://image.tmdb.org/t/p/w500";
-    NSString *posterURLString = self.movie[@"poster_path"];
-    NSString *fullPosterURLString = [baseURLString stringByAppendingString:posterURLString];
-    
-    NSURL *posterURL = [NSURL URLWithString:fullPosterURLString];
+    NSURL *posterURL = self.movie.posterUrl;
     
     self.posterView.image = nil;
     [self.posterView setImageWithURL:posterURL ];
     
     //setting up backdrop
-    NSString *backdropURLString = self.movie[@"backdrop_path"];
-    NSString *fullBackdropURLString = [baseURLString stringByAppendingString:backdropURLString];
-    
-    NSURL *backdropURL = [NSURL URLWithString:fullBackdropURLString];
+    NSURL *backdropURL = self.movie.backdropURL;
     
     self.backdropView.image = nil;
     [self.backdropView setImageWithURL:backdropURL ];
     
-    self.titleLabel.text = self.movie[@"title"];
-    self.synopsisLabel.text = self.movie[@"overview"];
+    self.titleLabel.text = self.movie.title;
+    self.synopsisLabel.text = self.movie.overview;
     
     [self.titleLabel sizeToFit];
     [self.synopsisLabel sizeToFit];
@@ -87,7 +80,7 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSArray* favoriteIDs = [defaults arrayForKey:@"favoriteIDs"];
     
-    NSNumber* movieID = self.movie[@"id"];
+    NSNumber* movieID = self.movie.movieID;
     for (NSNumber * favID in favoriteIDs) {
         if([movieID integerValue] == [favID integerValue]) {
             self.isFavorite = true;
@@ -123,7 +116,7 @@
         NSArray* favoriteIDs = [defaults arrayForKey:@"favoriteIDs"];
         
         NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(NSNumber* currentID, NSDictionary *bindings) {
-            return currentID != self.movie[@"id"];
+            return currentID != self.movie.movieID;
         }];
         
         favoriteIDs = [favoriteIDs filteredArrayUsingPredicate:predicate];
@@ -142,9 +135,9 @@
         if(mutableArray == nil)
             mutableArray = [[NSMutableArray alloc] init];
         
-        [mutableArray addObject:self.movie[@"id"]];
+        [mutableArray addObject:self.movie.movieID];
         
-        NSLog(@"%@", self.movie[@"id"]);
+        NSLog(@"%@", self.movie.movieID);
         NSLog(@"New Favorite IDs: %@", mutableArray);
         
         
@@ -166,7 +159,7 @@
     
     TrailerViewController *trailerViewController = [segue destinationViewController];
     
-    NSInteger movie_id = [self.movie[@"id"] integerValue];
+    NSInteger movie_id = [self.movie.movieID integerValue];
     trailerViewController.movie_id = movie_id;
 }
 
